@@ -6,7 +6,7 @@ def jogar():
     print("***Bem vindo ao jogo da Forca!***")
     print("*********************************")
 
-    palavra_secreta = "pera".upper()
+    palavra_secreta = "maçã".upper()
     # vai adicionar "_", para cada posição da string
     letras_acertadas = ["_" for letra in palavra_secreta]
 
@@ -18,7 +18,7 @@ def jogar():
 
     while(not enforcou and not acertou):
 
-        chute = raw_input("Qual letra? ")
+        chute = input("Qual letra? ")
         # tira os espaços da string no inicio e no final
         chute = chute.strip().upper()
         
@@ -39,9 +39,9 @@ def jogar():
         acertou = "_" not in letras_acertadas
 
         if(acertou):
-            print("Você ganhou.")
+            print("Você ganhou!!")
         else:
-            print("Você perdeu.")
+            print("Você perdeu!!")
 
         print(letras_acertadas)
 
