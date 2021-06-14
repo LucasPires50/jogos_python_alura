@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 import os, sys
 
 def jogar():
@@ -6,8 +6,9 @@ def jogar():
     print("***Bem vindo ao jogo da Forca!***")
     print("*********************************")
 
-    palavra_secreta = "banana".upper()
-    letras_acertadas = ["_","_","_","_","_","_"]
+    palavra_secreta = "pera".upper()
+    # vai adicionar "_", para cada posição da string
+    letras_acertadas = ["_" for letra in palavra_secreta]
 
     enforcou = False
     acertou = False
