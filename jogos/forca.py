@@ -3,28 +3,13 @@ import os, sys
 import random
 
 def jogar():
-    print("*********************************")
-    print("***Bem vindo ao jogo da Forca!***")
-    print("*********************************")
 
-    # abrir e ler o aqruivo
-    arquivo = open("palavra.txt", "r")
-    palavras = []
+    imprime_mensagem_abertura()
 
-    # loop para pegar as linhas do arquivo
-    for linha in arquivo:
-        linha = linha.strip()
-        palavras.append(linha)
-
-    # fechar o arquivo
-    arquivo.close()
-
-    # pegar uma palavra do arquivi aleatoriamente 
-    numero = random.randrange(0,len(palavras))
-    palavra_secreta = palavras[numero].upper()
+    palavra_secreta = carrega_palavra_secreta()
 
     # vai adicionar "_", para cada posição da string
-    letras_acertadas = ["_" for letra in palavra_secreta]
+    letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
 
     enforcou = False
     acertou = False
@@ -62,5 +47,33 @@ def jogar():
 
     print("Fim do jogo")
 
+
+def imprime_mensagem_abertura():
+    print("*********************************")
+    print("***Bem vindo ao jogo da Forca!***")
+    print("*********************************")
+
+def carrega_palavra_secreta():
+    # abrir e ler o aqruivo
+    arquivo = open("palavra.txt", "r")
+    palavras = []
+
+    # loop para pegar as linhas do arquivo
+    for linha in arquivo:
+        linha = linha.strip()
+        palavras.append(linha)
+
+    # fechar o arquivo
+    arquivo.close()
+
+    # pegar uma palavra do arquivi aleatoriamente 
+    numero = random.randrange(0,len(palavras))
+    palavra_secreta = palavras[numero].upper()
+    return palavra_secreta
+
+def inicializa_letras_acertadas(palavra):
+    return ["_" for letra in palavra]
+
+# chama a função jogar
 if(__name__ == "__main__"):
     jogar()
