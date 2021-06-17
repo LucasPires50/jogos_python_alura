@@ -10,26 +10,18 @@ def jogar():
 
     # vai adicionar "_", para cada posição da string
     letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
+    print(letras_acertadas)
 
     enforcou = False
     acertou = False
     erros_contador = 0
-
-    print(letras_acertadas)
-
+    
     while(not enforcou and not acertou):
 
-        chute = input("Qual letra? ")
-        # tira os espaços da string no inicio e no final
-        chute = chute.strip().upper()
-        
+        chute = pede_chute()
+
         if chute in palavra_secreta:
-            index = 0
-            for letra in palavra_secreta:
-                # upper muda as letras para maiuscula
-                if(chute == letra):
-                    letras_acertadas[index] = letra
-                index += 1
+            marca_chute_correto(chute, letras_acertadas, palavra_secreta)
         else:
             erros_contador += 1
 
@@ -41,11 +33,9 @@ def jogar():
         print(letras_acertadas)
 
     if(acertou):
-        print("Você ganhou!!")
+        imprime_mensagem_vencedor()
     else:
-        print("Você perdeu!!")
-
-    print("Fim do jogo")
+        imprime_mensagem_perdedor()
 
 
 def imprime_mensagem_abertura():
@@ -73,6 +63,26 @@ def carrega_palavra_secreta():
 
 def inicializa_letras_acertadas(palavra):
     return ["_" for letra in palavra]
+
+def pede_chute():
+    chute =  input("Qual letra? ")
+    # tira os espaços da string no inicio e no final
+    chute = chute.strip().upper()
+    return chute
+
+def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
+    index = 0
+    for letra in palavra_secreta:
+        # upper muda as letras para maiuscula
+        if(chute == letra):
+            letras_acertadas[index] = letra
+        index += 1
+
+def imprime_mensagem_vencedor():
+    print("Você ganhou!!")
+
+def imprime_mensagem_perdedor():
+    print("Você perdeu!!")
 
 # chama a função jogar
 if(__name__ == "__main__"):
