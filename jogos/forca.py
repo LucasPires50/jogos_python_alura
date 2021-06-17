@@ -11,12 +11,15 @@ def jogar():
     arquivo = open("palavra.txt", "r")
     palavras = []
 
+    # loop para pegar as linhas do arquivo
     for linha in arquivo:
         linha = linha.strip()
         palavras.append(linha)
 
+    # fechar o arquivo
     arquivo.close()
 
+    # pegar uma palavra do arquivi aleatoriamente 
     numero = random.randrange(0,len(palavras))
     palavra_secreta = palavras[numero].upper()
 
@@ -50,13 +53,12 @@ def jogar():
 
         # o "_" não devieria estar dentro das letras acertadas
         acertou = "_" not in letras_acertadas
-
-        if(acertou):
-            print("Você ganhou!!")
-        else:
-            print("Você perdeu!!")
-
         print(letras_acertadas)
+
+    if(acertou):
+        print("Você ganhou!!")
+    else:
+        print("Você perdeu!!")
 
     print("Fim do jogo")
 
