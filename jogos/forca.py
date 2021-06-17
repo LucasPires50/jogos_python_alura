@@ -1,12 +1,25 @@
 # -*- coding: UTF-8 -*-
 import os, sys
+import random
 
 def jogar():
     print("*********************************")
     print("***Bem vindo ao jogo da Forca!***")
     print("*********************************")
 
-    palavra_secreta = "maçã".upper()
+    # abrir e ler o aqruivo
+    arquivo = open("palavra.txt", "r")
+    palavras = []
+
+    for linha in arquivo:
+        linha = linha.strip()
+        palavras.append(linha)
+
+    arquivo.close()
+
+    numero = random.randrange(0,len(palavras))
+    palavra_secreta = palavras[numero].upper()
+
     # vai adicionar "_", para cada posição da string
     letras_acertadas = ["_" for letra in palavra_secreta]
 
